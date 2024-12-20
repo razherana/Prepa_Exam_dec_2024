@@ -12,8 +12,7 @@ abstract class BaseModel
   protected $table = "";
   protected $columns = [];
   private $data = [];
-  // protected $eager_load = [];
-  // protected $relation = [];
+  protected $eager_load = [];
   private $joins = [];
 
   /**
@@ -21,7 +20,7 @@ abstract class BaseModel
    * @param Closure $closureJoin
    * @param string $relation_name
    */
-  public function hasMany($otherModel, $closureJoin, $relation_name)
+  private function hasManyMethod($otherModel, $closureJoin, $relation_name)
   {
     $closureJoin->bindTo($this, $this::class);
     $others = $otherModel::all();
@@ -32,20 +31,82 @@ abstract class BaseModel
         $this->joins[$relation_name][] = $other;
   }
 
+  public function hasMany($otherModel, $closureJoin, $relation_name)
+  {
+    return ["hasMany", $otherModel, $closureJoin, $relation_name];
+  }
+
+  public function belongsTo($otherModel, $closureJoin, $relation_name)
+  {
+    return ["belongsTo", $otherModel, $closureJoin, $relation_name];
+  }
+
+
+  /**
+   * @param BaseModel[] $models
+   * @param string $otherModel
+   * @param Closure $closureJoin
+   * @param string $relation_name
+   */
+  private static function hasManyStatic($models, $otherModel, $closureJoin, $relation_name)
+  {
+    $others = $otherModel::all();
+    foreach ($models as $currModel) {
+      $closureJoin->bindTo($currModel, $currModel::class);
+      if (!isset($mainModel->joins[$relation_name]))
+        $currModel->joins[$relation_name] = [];
+      foreach ($others as $other)
+        if ($closureJoin($other))
+          $currModel->joins[$relation_name][] = $other;
+    }
+  }
+
   /**
    * @param string $otherModel
    * @param Closure $closureJoin
    * @param string $relation_name
    */
-  public function belongsTo($otherModel, $closureJoin, $relation_name)
+  private function belongsToMethod($otherModel, $closureJoin, $relation_name)
   {
     $closureJoin->bindTo($this, $this::class);
     $others = $otherModel::all();
     if (!isset($mainModel->joins[$relation_name]))
       $this->joins[$relation_name] = [];
     foreach ($others as $other)
-      if ($closureJoin($other))
+      if ($closureJoin($other)) {
         $this->joins[$relation_name] = $other;
+        break;
+      }
+  }
+
+  /**
+   * @param BaseModel[] $models
+   * @param string $otherModel
+   * @param Closure $closureJoin
+   * @param string $relation_name
+   */
+  private static function belongsToStatic($models, $otherModel, $closureJoin, $relation_name)
+  {
+    $others = $otherModel::all();
+    foreach ($models as $currModel) {
+      $closureJoin->bindTo($currModel, $currModel::class);
+      if (!isset($mainModel->joins[$relation_name]))
+        $currModel->joins[$relation_name] = [];
+      foreach ($others as $other)
+        if ($closureJoin($other)) {
+          $currModel->joins[$relation_name] = $other;
+          break;
+        }
+    }
+  }
+
+  private static function applyAllEagerLoad($models) {
+    $example = new static();
+    $eager_load = $example->eager_load;
+    foreach($eager_load as $e) {
+      $rel = $example->{$e}();
+      static::{$rel[0] . "Static"}($models, array_slice($rel, 1));
+    }
   }
 
   public function __construct($data = null)
@@ -70,7 +131,8 @@ abstract class BaseModel
     if (isset($this->join[$name]))
       return $this->join[$name];
     else if (method_exists($this, $name)) {
-      $this->{$name}();
+      $rel = $this->{$name}();
+      $this->{$rel[0] . "Method"}(array_slice($rel, 1));
       return $this->join[$name];
     }
 
@@ -99,6 +161,7 @@ abstract class BaseModel
       $el->init($line);
       $arr[] = $el;
     }
+    self::applyAllEagerLoad($arr);
     return $arr;
   }
 
