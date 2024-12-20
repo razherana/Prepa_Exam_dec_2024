@@ -19,6 +19,7 @@ class Trajet extends BaseModel
     "trajet_distance",
     "trajet_carburant"
   ];
+  protected $eager_load = [];
 
   public static function get_annee()
   {
@@ -61,6 +62,6 @@ class Trajet extends BaseModel
 
   public function chauffeur()
   {
-    $this->belongsTo(Chauffeur::class, fn($chauffeur) => $this->trajet_chauffeur == $chauffeur->chauffeur_id, "chauffeur");
+    return $this->belongsTo(Chauffeur::class, fn($trajet, $chauffeur) => $trajet->trajet_chauffeur == $chauffeur->chauffeur_id, "chauffeur");
   }
 }

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\models\queries\QueryExecutor;
+use ArgumentCountError;
 use Closure;
 use Exception;
 use PDO;
@@ -22,12 +23,11 @@ abstract class BaseModel
    */
   private function hasManyMethod($otherModel, $closureJoin, $relation_name)
   {
-    $closureJoin->bindTo($this, $this::class);
     $others = $otherModel::all();
     if (!isset($mainModel->joins[$relation_name]))
       $this->joins[$relation_name] = [];
     foreach ($others as $other)
-      if ($closureJoin($other))
+      if ($closureJoin($this, $other))
         $this->joins[$relation_name][] = $other;
   }
 
@@ -52,11 +52,10 @@ abstract class BaseModel
   {
     $others = $otherModel::all();
     foreach ($models as $currModel) {
-      $closureJoin->bindTo($currModel, $currModel::class);
       if (!isset($mainModel->joins[$relation_name]))
         $currModel->joins[$relation_name] = [];
       foreach ($others as $other)
-        if ($closureJoin($other))
+        if ($closureJoin($currModel, $other))
           $currModel->joins[$relation_name][] = $other;
     }
   }
@@ -68,12 +67,9 @@ abstract class BaseModel
    */
   private function belongsToMethod($otherModel, $closureJoin, $relation_name)
   {
-    $closureJoin->bindTo($this, $this::class);
     $others = $otherModel::all();
-    if (!isset($mainModel->joins[$relation_name]))
-      $this->joins[$relation_name] = [];
     foreach ($others as $other)
-      if ($closureJoin($other)) {
+      if ($closureJoin($this, $other)) {
         $this->joins[$relation_name] = $other;
         break;
       }
@@ -89,23 +85,24 @@ abstract class BaseModel
   {
     $others = $otherModel::all();
     foreach ($models as $currModel) {
-      $closureJoin->bindTo($currModel, $currModel::class);
-      if (!isset($mainModel->joins[$relation_name]))
-        $currModel->joins[$relation_name] = [];
-      foreach ($others as $other)
-        if ($closureJoin($other)) {
+      foreach ($others as $other) {
+        if ($closureJoin($currModel, $other)) {
           $currModel->joins[$relation_name] = $other;
           break;
         }
+      }
     }
   }
 
-  private static function applyAllEagerLoad($models) {
+  private static function applyAllEagerLoad($models, $options)
+  {
     $example = new static();
+    foreach($options as $k => $v)
+      $example->{$k} = $v;
     $eager_load = $example->eager_load;
-    foreach($eager_load as $e) {
+    foreach ($eager_load as $e) {
       $rel = $example->{$e}();
-      static::{$rel[0] . "Static"}($models, array_slice($rel, 1));
+      call_user_func_array([self::class, $rel[0] . "Static"], array_merge([$models], array_slice($rel, 1)));
     }
   }
 
@@ -128,12 +125,12 @@ abstract class BaseModel
 
   public function __get($name)
   {
-    if (isset($this->joins[$name]))
+    if (isset($this->joins[$name])) {
       return $this->joins[$name];
-    else if (method_exists($this, $name)) {
+    } else if (method_exists($this, $name)) {
       $rel = $this->{$name}();
-      $this->{$rel[0] . "Method"}(array_slice($rel, 1));
-      return $this->join[$name];
+      call_user_func([$this, $rel[0] . "Method"], ...array_slice($rel, 1));
+      return $this->joins[$name];
     }
 
     if (in_array($name, $this->columns))
@@ -150,7 +147,7 @@ abstract class BaseModel
       throw new Exception("No column $name");
   }
 
-  public static function all()
+  public static function all($options = [])
   {
     $arr = [];
     $example = new static();
@@ -158,10 +155,12 @@ abstract class BaseModel
     $res = QueryExecutor::execute($q);
     foreach ($res as $line) {
       $el = new static();
+      foreach($options as $k => $v)
+        $el->{$k} = $v;
       $el->init($line);
       $arr[] = $el;
     }
-    self::applyAllEagerLoad($arr);
+    self::applyAllEagerLoad($arr, $options);
     return $arr;
   }
 

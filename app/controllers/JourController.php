@@ -32,7 +32,7 @@ class JourController
     public function jours($dateParam)
     {
         $date = new DateTime($dateParam);
-        $trajetAll = Trajet::all();
+        $trajetAll = Trajet::all(['eager_load' => ['chauffeur']]);
         $trajets = [];
         $date_format = $date->format("Y-m-d");
         foreach ($trajetAll as $trajet) {
