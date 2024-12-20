@@ -67,12 +67,12 @@ abstract class BaseModel
 
   public function __get($name)
   {
-    if (isset($this->join[$name]))
-      return $this->join[$name];
+    if (isset($this->joins[$name]))
+      return $this->joins[$name];
     else if (method_exists($this, $name)) {
       $this->{$name}();
-      return $this->join[$name];
-    }
+      return $this->joins[$name];
+    } 
 
     if (in_array($name, $this->columns))
       return $this->data[$name] ?? null;

@@ -43,7 +43,7 @@
                     </div>
                     <div>
                         <h2>Benefice</h2>
-                        <p><?= $trajet->trajet_recette - $trajet->trajet_carburant * $prix_carburant ?>Ar</p>
+                        <p><?= $trajet->trajet_montant - $trajet->trajet_carburant * $prix_carburant ?>Ar</p>
                     </div>
                     <div>
                         <h2>Depart</h2>
@@ -55,7 +55,7 @@
                     </div>
                     <div>
                         <h2>Recette</h2>
-                        <p><?= $trajet->trajet_recette ?>Ar</p>
+                        <p><?= $trajet->trajet_montant ?>Ar</p>
                     </div>
                     <div>
                         <h2>Carburant</h2>
