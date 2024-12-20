@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\models\queries\QueryExecutor;
+use Closure;
 use Exception;
 use PDO;
 
@@ -11,11 +12,40 @@ abstract class BaseModel
   protected $table = "";
   protected $columns = [];
   private $data = [];
-  private $relations = [];
+  // protected $eager_load = [];
+  // protected $relation = [];
+  private $joins = [];
 
-  public static function join($model, $otherModel, $closureJoin, $closureInit)
+  /**
+   * @param string $otherModel
+   * @param Closure $closureJoin
+   * @param string $relation_name
+   */
+  public function hasMany($otherModel, $closureJoin, $relation_name)
   {
-    // $modelClass
+    $closureJoin->bindTo($this, $this::class);
+    $others = $otherModel::all();
+    if (!isset($mainModel->joins[$relation_name]))
+      $this->joins[$relation_name] = [];
+    foreach ($others as $other)
+      if ($closureJoin($other))
+        $this->joins[$relation_name][] = $other;
+  }
+
+  /**
+   * @param string $otherModel
+   * @param Closure $closureJoin
+   * @param string $relation_name
+   */
+  public function belongsTo($otherModel, $closureJoin, $relation_name)
+  {
+    $closureJoin->bindTo($this, $this::class);
+    $others = $otherModel::all();
+    if (!isset($mainModel->joins[$relation_name]))
+      $this->joins[$relation_name] = [];
+    foreach ($others as $other)
+      if ($closureJoin($other))
+        $this->joins[$relation_name] = $other;
   }
 
   public function __construct($data = null)
@@ -37,6 +67,13 @@ abstract class BaseModel
 
   public function __get($name)
   {
+    if (isset($this->join[$name]))
+      return $this->join[$name];
+    else if (method_exists($this, $name)) {
+      $this->{$name}();
+      return $this->join[$name];
+    }
+
     if (in_array($name, $this->columns))
       return $this->data[$name] ?? null;
     else

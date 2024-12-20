@@ -58,4 +58,9 @@ class Trajet extends BaseModel
 
     return $dates;
   }
+
+  public function chauffeur()
+  {
+    $this->belongsTo(Chauffeur::class, fn($chauffeur) => $this->trajet_chauffeur == $chauffeur->chauffeur_id, "chauffeur");
+  }
 }

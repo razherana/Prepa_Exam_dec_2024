@@ -40,6 +40,7 @@ class JourController
                 && (new DateTime($trajet->trajet_fin))->format("Y-m-d") >= $date_format)
                 $trajets[] = $trajet;
         }
-        Flight::render("jour", compact("date", "trajets"));
+        $prix_carburant = 5900;
+        Flight::render("jour", compact("date", "trajets", "prix_carburant"));
     }
 }
