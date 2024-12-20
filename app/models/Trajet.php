@@ -55,5 +55,7 @@ class Trajet extends BaseModel
       if (!in_array($jour2, $dates[$annee][$mois]))
         $dates[$annee][$mois][] = $jour2;
     }
+
+    return $dates;
   }
 }

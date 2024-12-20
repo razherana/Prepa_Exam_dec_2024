@@ -1,4 +1,3 @@
--- Active: 1714003570230@@127.0.0.1@3306@prepa1224
 CREATE DATABASE prepa1224;
 
 USE prepa1224;

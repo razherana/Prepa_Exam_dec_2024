@@ -38,10 +38,12 @@
         </div><!-- /.navbar-collapse -->
     </nav>
     <header class="col-md-2">
-        <?php foreach ($annees as $annee) { ?>
-            <a href="/dates/<?= $annee ?>"><?= $annee ?></a>
+        <?php foreach ($annees as $annee_) { ?>
+            <a href="/dates/<?= $annee_ ?>"><?= $annee_ ?></a>
         <?php } ?>
-        <a href="/dates/<?= date("Y") ?>"><?= date("Y") ?></a>
+        <?php if (!in_array($annee__ = date("Y"), $annees)) { ?>
+            <a href="/dates/<?= $annee__ ?>"><?= $annee__ ?></a>
+        <?php } ?>
     </header>
     <section class="col-md-10 col-md-offset-2">
         <h1 class="title">Les Jours ouvrables de l'annee 2001</h1>
@@ -64,7 +66,8 @@
                 <div>
                     <?php foreach ($dates[$i] ?? [] as $jour) { ?>
                         <div class="col-md-1">
-                            <a href="/jour" class="itemDate">
+                            <a href="/jour/<?= $annee ?>-<?= str_pad($i, 2, "0", STR_PAD_LEFT) ?>-<?= str_pad($jour, 2, "0", STR_PAD_LEFT) ?>"
+                                class="itemDate">
                                 <p><?= $jour ?></p>
                             </a>
                         </div>

@@ -26,7 +26,7 @@ class JourController
     {
         $dates = Trajet::get_dates()[$annee] ?? [];
         $annees = Trajet::get_annee();
-        Flight::render("date", compact("dates", "annees"));
+        Flight::render("date", compact("dates", "annees", "annee"));
     }
 
     public function jours($dateParam)
@@ -35,9 +35,11 @@ class JourController
         $trajetAll = Trajet::all();
         $trajets = [];
         $date_format = $date->format("Y-m-d");
-        foreach ($trajetAll as $trajet)
-            if ($trajet->trajet_debut >= $date_format && $trajet->trajet_fin >= $date_format)
+        foreach ($trajetAll as $trajet) {
+            if ((new DateTime($trajet->trajet_debut))->format("Y-m-d") <= $date_format 
+                && (new DateTime($trajet->trajet_fin))->format("Y-m-d") >= $date_format)
                 $trajets[] = $trajet;
+        }
         Flight::render("jour", compact("date", "trajets"));
     }
 }

@@ -20,9 +20,8 @@ $app = Flight::app();
 $jourController = new JourController($app);
 
 $router->get('/dates/@annee', [$jourController, 'dates']);
-$router->get('/jours/@dateParam', [$jourController, 'jours']);
+$router->get('/jour/@dateParam', [$jourController, 'jours']);
 $router->get('/dates', function() use ($jourController) {
 	$jourController->dates(date("Y"));
 });
-$router->get('/jours', [$jourController, 'jours']);
 
