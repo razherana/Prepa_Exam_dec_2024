@@ -38,11 +38,10 @@
         </div><!-- /.navbar-collapse -->
     </nav>
     <header class="col-md-2">
-        <a href="">2001</a>
-        <a href="">2001</a>
-        <a href="">2001</a>
-        <a href="">2001</a>
-        <a href="">2001</a>
+        <?php foreach ($annees as $annee) { ?>
+            <a href="/jour/<?= $annee ?>"><?= $annee ?></a>
+        <?php } ?>
+        <a href="/jour/<?= date("Y") ?>"><?= date("Y") ?></a>
     </header>
     <section class="col-md-10 col-md-offset-2">
         <h1 class="title">Les Jours ouvrables de l'annee 2001</h1>
@@ -61,57 +60,17 @@
             <button class="col-md-1" onclick="getJour(1200)">Decembre</button>
         </div>
         <div id="jour" class="row">
-            <div>
-                <div class="col-md-1">
-                    <a href="jour" class="itemDate">
-                        <p>1</p>
-                    </a>
+            <?php for ($i = 1; $i <= 12; $i++) { ?>
+                <div>
+                    <?php foreach ($dates[$i] ?? [] as $jour) { ?>
+                        <div class="col-md-1">
+                            <a href="jour" class="itemDate">
+                                <p><?= $jour ?></p>
+                            </a>
+                        </div>
                 </div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-                <div class="col-md-1">
-                    <a href="#" class="itemDate">
-                        <p>1</p>
-                    </a>
-                </div>
-            </div>
+        <?php }
+                } ?>
         </div>
     </section>
 
