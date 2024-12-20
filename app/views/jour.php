@@ -26,176 +26,45 @@
         <button>Listes des chaffeurs</button>
     </header>
     <section>
-        <div class="col-md-6">
-            <div class="menuContain">
-                <a href="#" class="imageLogo">
-                    <img src="assets/image/bus.png" alt="">
-                    <p>1257 TAC</p>
-                </a>
-                <div class="menuItem">
-                    <div>
-                        <h2>Chauffeur</h2>
-                        <p>Jean Michel</p>
-                    </div>
-                    <div>
-                        <h2>Benefice</h2>
-                        <p>235Ar</p>
-                    </div>
-                    <div>
-                        <h2>Depart</h2>
-                        <p>Jean Michel 22:30</p>
-                    </div>
-                    <div>
-                        <h2>Arriver</h2>
-                        <p>Jean Michel 23:30</p>
-                    </div>
-                    <div>
-                        <h2>Recette</h2>
-                        <p>300000Ar</p>
-                    </div>
-                    <div>
-                        <h2>Carburant</h2>
-                        <p>250000Ar</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="menuContain">
-                <a href="#" class="imageLogo">
-                    <img src="assets/image/bus.png" alt="">
-                    <p>1257 TAC</p>
-                </a>
-                <div class="menuItem">
-                    <div>
-                        <h2>Chauffeur</h2>
-                        <p>Jean Michel</p>
-                    </div>
-                    <div>
-                        <h2>Benefice</h2>
-                        <p>235Ar</p>
-                    </div>
-                    <div>
-                        <h2>Depart</h2>
-                        <p>Jean Michel 22:30</p>
-                    </div>
-                    <div>
-                        <h2>Arriver</h2>
-                        <p>Jean Michel 23:30</p>
-                    </div>
-                    <div>
-                        <h2>Recette</h2>
-                        <p>300000Ar</p>
-                    </div>
-                    <div>
-                        <h2>Carburant</h2>
-                        <p>250000Ar</p>
+        <?php if (!empty($trajets)) { ?>
+            <h1>Pas de trajet pendant cette date.</h1>
+        <?php } else { 
+            foreach($trajets as $trajet) { ?>
+            <div class="col-md-6">
+                <div class="menuContain">
+                    <a href="#" class="imageLogo">
+                        <img src="assets/image/bus.png" alt="">
+                        <p><?= $trajet->trajet_vehicule ?></p>
+                    </a>
+                    <div class="menuItem">
+                        <div>
+                            <h2>Chauffeur</h2>
+                            <p>Jean Michel</p>
+                        </div>
+                        <div>
+                            <h2>Benefice</h2>
+                            <p>235Ar</p>
+                        </div>
+                        <div>
+                            <h2>Depart</h2>
+                            <p>Jean Michel 22:30</p>
+                        </div>
+                        <div>
+                            <h2>Arriver</h2>
+                            <p>Jean Michel 23:30</p>
+                        </div>
+                        <div>
+                            <h2>Recette</h2>
+                            <p>300000Ar</p>
+                        </div>
+                        <div>
+                            <h2>Carburant</h2>
+                            <p>250000Ar</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="menuContain">
-                <a href="#" class="imageLogo">
-                    <img src="assets/image/bus.png" alt="">
-                    <p>1257 TAC</p>
-                </a>
-                <div class="menuItem">
-                    <div>
-                        <h2>Chauffeur</h2>
-                        <p>Jean Michel</p>
-                    </div>
-                    <div>
-                        <h2>Benefice</h2>
-                        <p>235Ar</p>
-                    </div>
-                    <div>
-                        <h2>Depart</h2>
-                        <p>Jean Michel 22:30</p>
-                    </div>
-                    <div>
-                        <h2>Arriver</h2>
-                        <p>Jean Michel 23:30</p>
-                    </div>
-                    <div>
-                        <h2>Recette</h2>
-                        <p>300000Ar</p>
-                    </div>
-                    <div>
-                        <h2>Carburant</h2>
-                        <p>250000Ar</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="menuContain">
-                <a href="#" class="imageLogo">
-                    <img src="assets/image/bus.png" alt="">
-                    <p>1257 TAC</p>
-                </a>
-                <div class="menuItem">
-                    <div>
-                        <h2>Chauffeur</h2>
-                        <p>Jean Michel</p>
-                    </div>
-                    <div>
-                        <h2>Benefice</h2>
-                        <p>235Ar</p>
-                    </div>
-                    <div>
-                        <h2>Depart</h2>
-                        <p>Jean Michel 22:30</p>
-                    </div>
-                    <div>
-                        <h2>Arriver</h2>
-                        <p>Jean Michel 23:30</p>
-                    </div>
-                    <div>
-                        <h2>Recette</h2>
-                        <p>300000Ar</p>
-                    </div>
-                    <div>
-                        <h2>Carburant</h2>
-                        <p>250000Ar</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="menuContain">
-                <a href="#" class="imageLogo">
-                    <img src="assets/image/bus.png" alt="">
-                    <p>1257 TAC</p>
-                </a>
-                <div class="menuItem">
-                    <div>
-                        <h2>Chauffeur</h2>
-                        <p>Jean Michel</p>
-                    </div>
-                    <div>
-                        <h2>Benefice</h2>
-                        <p>235Ar</p>
-                    </div>
-                    <div>
-                        <h2>Depart</h2>
-                        <p>Jean Michel 22:30</p>
-                    </div>
-                    <div>
-                        <h2>Arriver</h2>
-                        <p>Jean Michel 23:30</p>
-                    </div>
-                    <div>
-                        <h2>Recette</h2>
-                        <p>300000Ar</p>
-                    </div>
-                    <div>
-                        <h2>Carburant</h2>
-                        <p>250000Ar</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php }} ?>
     </section>
 </body>
 <script src="assets/js/jour.js"></script>

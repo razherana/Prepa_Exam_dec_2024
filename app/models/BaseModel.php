@@ -11,6 +11,12 @@ abstract class BaseModel
   protected $table = "";
   protected $columns = [];
   private $data = [];
+  private $relations = [];
+
+  public static function join($model, $otherModel, $closureJoin, $closureInit)
+  {
+    // $modelClass
+  }
 
   public function __construct($data = null)
   {
