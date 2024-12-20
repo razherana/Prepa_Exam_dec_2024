@@ -19,9 +19,9 @@ $app = Flight::app();
 
 $Welcome_Controller = new WelcomeController();
 $jourController = new JourController($app);
-$router->get('/', [$Welcome_Controller, 'home']);
-$router->get('/jour', [$Welcome_Controller, 'jour']);
-$router->get('/jour/@annee', [$jourController, 'jours']);
+
+$router->get('/dates/@annee', [$jourController, 'dates']);
+$router->get('/jours', [$jourController, 'jours']);
 
 
 //$router->get('/', [ 'WelcomeController', 'home' ]); 

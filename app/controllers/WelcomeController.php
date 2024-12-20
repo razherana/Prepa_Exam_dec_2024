@@ -12,8 +12,7 @@ class WelcomeController {
 
 
 	public function home() {
-        $data = ['name' => 'Jean'];
-        Flight::render('date', $data);
+        Flight::render('date');
     }
 
     public function jour() {

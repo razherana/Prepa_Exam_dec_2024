@@ -55,7 +55,7 @@
             <button class="col-md-1" onclick="getJour(700)">Juillet</button>
             <button class="col-md-1" onclick="getJour(800)">Aout</button>
             <button class="col-md-1" onclick="getJour(900)">Septembre</button>
-            <button class="col-md-1" onclick="getJour(1000)">Ocktobre</button>
+            <button class="col-md-1" onclick="getJour(1000)">Octobre</button>
             <button class="col-md-1" onclick="getJour(1100)">Novembre</button>
             <button class="col-md-1" onclick="getJour(1200)">Decembre</button>
         </div>
