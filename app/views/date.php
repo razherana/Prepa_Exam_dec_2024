@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap 101 Template</title>
 
-    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/welcome.css">
+    <link href="/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/welcome.css">
 
-    <script src="bs3/js/jquery.min.js"></script>
-    <script src="bs3/js/bootstrap.min.js"></script>
+    <script src="/bs3/js/jquery.min.js"></script>
+    <script src="/bs3/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -75,6 +75,6 @@
     </section>
 
 </body>
-<script src="assets/js/date.js"></script>
+<script src="/assets/js/date.js"></script>
 
 </html>

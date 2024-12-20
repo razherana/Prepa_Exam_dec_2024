@@ -24,6 +24,7 @@ class JourController
 
    public function jours($annee) {
         $dates = Trajet::get_dates()[$annee] ?? [];
-        Flight::render("date", compact("dates"));
+        $annees = Trajet::get_annee();
+        Flight::render("date", compact("dates", "annees"));
    }
 }
