@@ -44,5 +44,5 @@ moveButton2.addEventListener("click", () => {
 
 function getJour(nbr) {
   const jour = document.getElementById("jour");
-  jour.style.transform = "translateX(-" + nbr + "vw)";
+  jour.style.transform = "translateX(-" + nbr + "%)";
 }

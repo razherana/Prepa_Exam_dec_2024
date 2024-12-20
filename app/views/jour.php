@@ -22,7 +22,8 @@
         <img src="assets/image/background.gif" alt="">
     </div>
     <header>
-        <button>Listes des voituress</button>
+        <button>Listes des voitures</button>
+        <button>Listes des chaffeurs</button>
     </header>
     <section>
         <div class="col-md-6">

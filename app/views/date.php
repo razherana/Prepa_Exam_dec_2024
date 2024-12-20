@@ -16,34 +16,39 @@
 </head>
 
 <body>
-    <div class="back">
-        <img src="assets/image/background.gif" alt="">
-    </div>
-    <header>
-        <div class="countHeader">
-            <div class="itemHeader" id="contentDate">
-                <button class="">2020</button>
-                <button class="actif">2020</button>
-                <button class="">2020</button>
-                <button class="">2020</button>
-                <button class="">2020</button>
-                <button class="">2020</button>
-                <button class="">2020</button>
-                <button class="">2020</button>
-                <button class="">2020</button>
-            </div>
-            <button class="transfor left" id="button1">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <button class="transfor right" id="button2">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            </button>
+            <a class="navbar-brand" href="#">Title</a>
         </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Liste des dates</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <header class="col-md-2">
+        <a href="">2001</a>
+        <a href="">2001</a>
+        <a href="">2001</a>
+        <a href="">2001</a>
+        <a href="">2001</a>
     </header>
-    <section>
-        <div class="headerSection row">
+    <section class="col-md-10 col-md-offset-2">
+        <h1 class="title">Les Jours ouvrables</h1>
+        <div class="headJour">
             <button class="col-md-1" onclick="getJour(0)">Janvier</button>
-            <button class="col-md-1" onclick="getJour(100)">Fevier</button>
+            <button class="col-md-1" onclick="getJour(100)">Fevrier</button>
             <button class="col-md-1" onclick="getJour(200)">Mars</button>
             <button class="col-md-1" onclick="getJour(300)">Avril</button>
             <button class="col-md-1" onclick="getJour(400)">Mai</button>
@@ -55,151 +60,61 @@
             <button class="col-md-1" onclick="getJour(1000)">Novembre</button>
             <button class="col-md-1" onclick="getJour(1100)">Decembre</button>
         </div>
-        <div class="bigContainer">
-            <div class="contenerDate" id="jour">
-                <div class="ItemsDate row">
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
+        <div id="jour" class="row">
+            <div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
                 </div>
-                <div class="ItemsDate row">
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
                 </div>
-                <div class="ItemsDate row">
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
                 </div>
-                <div class="ItemsDate row">
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
+            </div>
+            <div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
                 </div>
-                <div class="ItemsDate row">
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
                 </div>
-                <div class="ItemsDate row">
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
                 </div>
-                <div class="ItemsDate row">
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
-                    <div class="contSpace col-md-1">
-                        <a href="jour">
-                            <h2>Lundi</h2>
-                            <p class="dateItem">1</p>
-                        </a>
-                    </div>
+            </div>
+            <div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
+                </div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
+                </div>
+                <div class="col-md-1">
+                    <a href="#" class="itemDate">
+                        <p>1</p>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
 </body>
 <script src="assets/js/date.js"></script>
 

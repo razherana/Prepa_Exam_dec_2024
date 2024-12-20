@@ -72,3 +72,27 @@
   background-color: #ffffff;
   box-shadow: 2px 2px 4px #000070;
 }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  gap: 100px;
+}
+
+header > button {
+  font-size: 20px;
+  width: 300px;
+  background-color: rgb(0, 0, 66);
+  height: 50px;
+  font-weight: bold;
+  border: 1px solid black;
+  opacity: 0.8;
+  transition: all 0.5;
+  color: white;
+}
+
+header > button:hover {
+  opacity: 1;
+}
