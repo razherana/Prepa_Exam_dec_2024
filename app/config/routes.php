@@ -21,6 +21,9 @@ $Welcome_Controller = new WelcomeController();
 $jourController = new JourController($app);
 
 $router->get('/dates/@annee', [$jourController, 'dates']);
+$router->get('/dates', function() use ($jourController) {
+	$jourController->dates(date("Y"));
+});
 $router->get('/jours', [$jourController, 'jours']);
 
 
