@@ -45,25 +45,25 @@
         <a href="">2001</a>
     </header>
     <section class="col-md-10 col-md-offset-2">
-        <h1 class="title">Les Jours ouvrables</h1>
+        <h1 class="title">Les Jours ouvrables de l'annee 2001</h1>
         <div class="headJour">
-            <button class="col-md-1" onclick="getJour(0)">Janvier</button>
-            <button class="col-md-1" onclick="getJour(100)">Fevrier</button>
-            <button class="col-md-1" onclick="getJour(200)">Mars</button>
-            <button class="col-md-1" onclick="getJour(300)">Avril</button>
-            <button class="col-md-1" onclick="getJour(400)">Mai</button>
-            <button class="col-md-1" onclick="getJour(500)">Juin</button>
-            <button class="col-md-1" onclick="getJour(600)">Juillet</button>
-            <button class="col-md-1" onclick="getJour(700)">Aout</button>
-            <button class="col-md-1" onclick="getJour(800)">Septembre</button>
-            <button class="col-md-1" onclick="getJour(900)">Ocktobre</button>
-            <button class="col-md-1" onclick="getJour(1000)">Novembre</button>
-            <button class="col-md-1" onclick="getJour(1100)">Decembre</button>
+            <button class="col-md-1" onclick="getJour(100)">Janvier</button>
+            <button class="col-md-1" onclick="getJour(200)">Fevrier</button>
+            <button class="col-md-1" onclick="getJour(300)">Mars</button>
+            <button class="col-md-1" onclick="getJour(400)">Avril</button>
+            <button class="col-md-1" onclick="getJour(500)">Mai</button>
+            <button class="col-md-1" onclick="getJour(600)">Juin</button>
+            <button class="col-md-1" onclick="getJour(700)">Juillet</button>
+            <button class="col-md-1" onclick="getJour(800)">Aout</button>
+            <button class="col-md-1" onclick="getJour(900)">Septembre</button>
+            <button class="col-md-1" onclick="getJour(1000)">Ocktobre</button>
+            <button class="col-md-1" onclick="getJour(1100)">Novembre</button>
+            <button class="col-md-1" onclick="getJour(1200)">Decembre</button>
         </div>
         <div id="jour" class="row">
             <div>
                 <div class="col-md-1">
-                    <a href="#" class="itemDate">
+                    <a href="jour" class="itemDate">
                         <p>1</p>
                     </a>
                 </div>
